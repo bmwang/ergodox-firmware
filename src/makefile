@@ -120,7 +120,9 @@ all: $(TARGET).hex $(TARGET).eep
 clean:
 	@echo
 	@echo --- cleaning ---
-	git clean -dX  # remove ignored files and directories
+	rm -f firmware.eep firmware.elf firmware.hex firmware.map
+	find . -name "*.o" -print0 | xargs -0 rm -f
+	find . -name "*.o.dep" -print0 | xargs -0 rm -f
 
 # -----------------------------------------------------------------------------
 
