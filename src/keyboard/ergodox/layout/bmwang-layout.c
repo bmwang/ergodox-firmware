@@ -200,7 +200,7 @@ KB_MATRIX_LAYER(
 	kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, kprrel,
 	ktrans, NULL,   kprrel, NULL,   NULL,   NULL,   lpush2,
 	ktrans, kprrel, kprrel, kprrel, NULL,   NULL,
-	ktrans, NULL,   NULL,   kprrel, kprrel, NULL,   NULL,
+	ktrans, NULL,   NULL,   kprrel, kprrel, NULL,   lpop1,
 	kprrel, kprrel, NULL,   ktrans, ktrans,
 	ktrans, ktrans,
 	ktrans, NULL,   NULL,
