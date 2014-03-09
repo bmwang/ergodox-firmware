@@ -9,21 +9,56 @@
 #include "../../../lib/key-functions/public.h"
 #include "../matrix.h"
 #include "../layout.h"
+#include "../../../main.h"
+
 // FUNCTIONS ------------------------------------------------------------------
+
+// Custom push/pops that turn on/off the LEDs
+void kbfun_layer_push_1_led(void) {
+	_kb_led_3_on();
+	kbfun_layer_push_1();
+}
+
+void kbfun_layer_pop_1_led(void) {
+	_kb_led_3_off();
+	kbfun_layer_pop_1();
+}
+
+void kbfun_layer_push_2_led(void) {
+	_kb_led_2_on();
+	kbfun_layer_push_2();
+}
+
+void kbfun_layer_pop_2_led(void) {
+	_kb_led_2_off();
+	kbfun_layer_pop_2();
+}
+
+// Custom kprrel for lighting up a LED
+void kbfun_press_release_led(void) {
+	if (main_arg_was_pressed) {
+		_kb_led_1_off();
+	} else {
+		_kb_led_1_on();
+	}
+	kbfun_press_release();
+}
+
+// Pop whatever is on the layer stack
 void kbfun_layer_pop_all(void) {
-  kbfun_layer_pop_1();
-  kbfun_layer_pop_2();
+  kbfun_layer_pop_1_led();
+  kbfun_layer_pop_2_led();
 }
 
 // DEFINITIONS ----------------------------------------------------------------
-#define  kprrel   &kbfun_press_release
+#define  kprrel   &kbfun_press_release_led
 #define  ktog     &kbfun_toggle
 #define  ktrans   &kbfun_transparent
-#define  lpush1   &kbfun_layer_push_1
-#define  lpush2   &kbfun_layer_push_2
+#define  lpush1   &kbfun_layer_push_1_led
+#define  lpush2   &kbfun_layer_push_2_led
 #define  lpop     &kbfun_layer_pop_all
-#define  lpop1    &kbfun_layer_pop_1
-#define  lpop2    &kbfun_layer_pop_2
+#define  lpop1    &kbfun_layer_pop_1_led
+#define  lpop2    &kbfun_layer_pop_2_led
 #define  dbtldr   &kbfun_jump_to_bootloader
 #define  sshprre  &kbfun_shift_press_release
 #define  s2kcap   &kbfun_2_keys_capslock_press_release
