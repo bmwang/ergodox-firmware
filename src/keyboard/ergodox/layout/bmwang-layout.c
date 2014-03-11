@@ -64,6 +64,7 @@ void kbfun_layer_pop_all(void) {
 #define  s2kcap   &kbfun_2_keys_capslock_press_release
 #define  slpunum  &kbfun_layer_push_numpad
 #define  slponum  &kbfun_layer_pop_numpad
+#define  mprrel   &kbfun_mediakey_press_release
 // ----------------------------------------------------------------------------
 
 // LAYOUT ---------------------------------------------------------------------
@@ -117,10 +118,10 @@ KB_MATRIX_LAYER(
 
 	// right hand
 
-	_F12, _F6,     _F7, _F8,    _F9, _F10,    0,
-	0,    0,       0,   0,   0,      _arrowR, 0,
-	0,    _arrowL, 0,   0,   0,      0,
-	0,    0,       0,   0,   0,      0,       0,
+	_F12, _F6,     _F7, _F8,    _F9, _F10,                MEDIAKEY_PLAY_PAUSE,
+	0,    0,       0,   0,   0,      _arrowR,             MEDIAKEY_PREV_TRACK,
+	0,    _arrowL, 0,   0,   0,      MEDIAKEY_NEXT_TRACK,
+	0,    0,       0,   0,   0,      0,                   0,
 	0,    0,       0,   0,   0,
 	0,    0,
 	0,    0,       0,
@@ -209,11 +210,11 @@ KB_MATRIX_LAYER(
 
 	// right hand
 
-	kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, ktrans,
-	lpop,   NULL,   NULL,   NULL,   NULL,   kprrel, ktrans,
-	NULL,   kprrel, NULL,   NULL,   NULL,   NULL,
+	kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, mprrel,
+	lpop,   NULL,   NULL,   NULL,   NULL,   kprrel, mprrel,
+	NULL,   kprrel, NULL,   NULL,   NULL,   mprrel,
 	NULL,   NULL,   NULL,   NULL,   NULL,   NULL,   ktrans,
-	ktrans,   NULL,   NULL,   NULL,   dbtldr,
+	ktrans, NULL,   NULL,   NULL,   dbtldr,
 	ktrans, ktrans,
 	ktrans, NULL,   NULL,
 	ktrans, ktrans, ktrans
@@ -301,9 +302,9 @@ KB_MATRIX_LAYER(
 
 	// right hand
 
-	kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, ktrans,
-	NULL,   NULL,   NULL,   NULL,   NULL,   kprrel, ktrans,
-	NULL,   kprrel, NULL,   NULL,   NULL,   NULL,
+	kprrel, kprrel, kprrel, kprrel, kprrel, kprrel, mprrel,
+	NULL,   NULL,   NULL,   NULL,   NULL,   kprrel, mprrel,
+	NULL,   kprrel, NULL,   NULL,   NULL,   mprrel,
 	NULL,   NULL,   NULL,   NULL,   NULL,   NULL,   ktrans,
 	ktrans, NULL,   NULL,   NULL,   NULL,
 	ktrans, ktrans,
